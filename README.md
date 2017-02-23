@@ -17,61 +17,60 @@ Usage
 	)
 
 	func main() {
-
-	   func main() {
 		schema := `
 	    interface Pet {
-	        name: String
+		name: String
 	    }
 	    type Dog implements Pet {
-	        name: String
-	        woofs: Boolean
+		name: String
+		woofs: Boolean
 	    }
 	    type Cat implements Pet {
-	        name: String
-	        meows: Boolean
+		name: String
+		meows: Boolean
 	    }
 	    type QueryRoot {
-	        pets: [Pet]
+		pets: [Pet]
 	    }
-	    `
-		resolvers := map[string]interface{}{}
-		resolvers["QueryRoot/pets"] = func(params *graphql.ResolveParams) (interface{}, error) {
-			return []map[string]interface{}{
-				{
-					"__typename": "Dog",
-					"name":       "Odie",
-					"woofs":      true,
-				},
-				{
-					"__typename": "Cat",
-					"name":       "Garfield",
-					"meows":      false,
-				},
-			}, nil
-		}
-	
-		executor, err := graphql.NewExecutor(schema, "QueryRoot", "", resolvers)
-		executor.ResolveType = func(value interface{}) string {
-			if object, ok := value.(map[string]interface{}); ok {
-				return object["__typename"].(string)
-			}
-			return ""
-		}
-	
-		if err != nil {
-			panic(err)
-		}
-	
-		api := handler.New(&handler.Config{
-			Executor: executor,
-			Context:  "",
-			Pretty:   true,
-		})
-	
-		http.Handle("/graphql", api)
-		http.ListenAndServe(":3000", nil)
+    `
+	resolvers := map[string]interface{}{}
+	resolvers["QueryRoot/pets"] = func(params *graphql.ResolveParams) (interface{}, error) {
+		return []map[string]interface{}{
+			{
+				"__typename": "Dog",
+				"name":       "Odie",
+				"woofs":      true,
+			},
+			{
+				"__typename": "Cat",
+				"name":       "Garfield",
+				"meows":      false,
+			},
+		}, nil
 	}
+
+	executor, err := graphql.NewExecutor(schema, "QueryRoot", "", resolvers)
+	executor.ResolveType = func(value interface{}) string {
+		if object, ok := value.(map[string]interface{}); ok {
+			return object["__typename"].(string)
+		}
+		return ""
+	}
+
+	if err != nil {
+		panic(err)
+	}
+
+	api := handler.New(&handler.Config{
+		Executor: executor,
+		Context:  "",
+		Pretty:   true,
+	})
+
+	http.Handle("/graphql", api)
+	http.ListenAndServe(":3000", nil)
+}
+
 ```
 **Details**
 
