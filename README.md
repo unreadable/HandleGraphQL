@@ -12,7 +12,7 @@ Usage
 	
 	import (
 	    "net/http"
-	    "github.com/krypton97/handler"
+	    "github.com/krypton97/HandleGraphQL"
 	    "github.com/playlyfe/go-graphql"
 	)
 
