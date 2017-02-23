@@ -3,8 +3,7 @@
 **Notes:**
 
 This GraphQL Handler is compatible only with `https://github.com/playlyfe/go-graphql` implementation. 
-It's a `production` ready handler that fits extremly well with the library. 
-Usage
+It's a `production` ready handler that fits extremely well with the library. 
 
 **Usage:**
 ``` ruby
