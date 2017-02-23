@@ -6,7 +6,8 @@ This GraphQL Handler is compatible only with `https://github.com/playlyfe/go-gra
 Usage
 
 **Usage:**
-	```ruby
+``` ruby
+	
 	package main
 	
 	import (
@@ -71,7 +72,7 @@ Usage
 		http.Handle("/graphql", api)
 		http.ListenAndServe(":3000", nil)
 	}
-	```
+```
 **Details**
 
 The handler will accept requests with the parameters:
