@@ -1,8 +1,9 @@
-#Production Readu Golang HTTP.Handler for graphl-go
+# Golang HTTP.Handler for graphl-go
 
 **Notes:**
 
 This GraphQL Handler is compatible only with `https://github.com/playlyfe/go-graphql` implementation. 
+It's a production ready handler that fits extremly well with the library. 
 Usage
 
 **Usage:**
